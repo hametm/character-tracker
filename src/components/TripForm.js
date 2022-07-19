@@ -15,8 +15,8 @@ function TripForm(props) {
     return (
         <form action="">
             <legend>New Trip</legend>
-            <label htmlFor="trip"></label>
-            <input type="text" id="trip" onChange={handleChange} />
+            <label htmlFor="tripName"></label>
+            <input type="text" id="tripName" onChange={handleChange} />
             <button id="submit" onClick={buttonClick}>Submit</button>
         </form>
       );

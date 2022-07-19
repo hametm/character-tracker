@@ -7,15 +7,28 @@ function Trip(props) {
 
 const [activityList, setActivityList] = useState([]);
 
-    const addActivity = (activity) => {
-        setActivityList(activityList.concat(activity));
+    const addActivity = (name, time, location, notes) => {
+        let newActivity = {
+            name: name,
+            time: time,
+            location: location,
+            notes: notes,
+        };
+        setActivityList(activityList.concat(newActivity));
         console.log(activityList);
     }
 
     const displayActivities = activityList.map(activity => {
         return (
             <ul key={uniqid()}>
-                <li><Activity name={activity} /></li>
+                <li>
+                    <Activity 
+                        name={activity.name} 
+                        time={activity.time} 
+                        location = {activity.location}
+                        notes = {activity.notes}
+                    />
+                </li>
             </ul>
         );
     });
