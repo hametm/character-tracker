@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import TripForm from "./components/TripForm";
+import Trip from "./components/Trip";
+import uniqid from "uniqid";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [tripList, setTripList] = useState([]);
+
+    const addTrip = (trip) => {
+        setTripList(tripList.concat(trip));
+        console.log(tripList);
+    }
+    
+    const displayTrips = tripList.map(trip => {
+            return (
+                <ul key={uniqid()}>
+                    <li><Trip name={trip} /></li>
+                </ul>
+            );
+    });
+
+    return (
+      <div className="App">
+        <h1>Trip Planner</h1>
+        <TripForm addTrip={addTrip} />
+        {displayTrips}
+      </div>
+    );
 }
 
 export default App;
