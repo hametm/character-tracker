@@ -1,48 +1,43 @@
 import React, { useState, useEffect } from "react";
 import Activity from "./Activity";
 import ActivityForm from "./ActivityForm";
-import EditActivity from "./EditActivity";
 import uniqid from "uniqid";
 
 function Trip(props) {
 
-    const [activityList, setActivityList] = useState([]);
-    const [show, setShow] = useState(0);
+    const [show, setShow] = useState(0); 
 
-    const addActivity = (name, time, location, notes) => {
-        let newActivity = {
-            name: name,
-            time: time,
-            location: location,
-            notes: notes,
-        };
-        setActivityList(activityList.concat(newActivity));
-        setShow(0);
-    }
+    const changeShow = (num) => {
+        setShow(num);
+    }   
 
-    const showActivities = activityList.map(activity => {
-        return (
-            <ul key={uniqid()}>
-                <li>
-                    <Activity 
-                        name={activity.name} 
-                        time={activity.time} 
-                        location = {activity.location}
-                        notes = {activity.notes}
-                    />
-                </li>
-            </ul>
-        );
+    const showActivities = props.activityList.map(activity => {
+        if (activity.tripName === props.name) {
+            return (
+                <ul key={uniqid()}>
+                    <li>
+                        <Activity 
+                            name={activity.name} 
+                            time={activity.time} 
+                            location = {activity.location}
+                            notes = {activity.notes}
+                        />
+                    </li>
+                </ul>
+            );
+        }
+        
     });
 
     const showActivityForm = () => {
         if (show === 1) {
             return (
-                <ActivityForm addActivity={addActivity} />
+                <ActivityForm 
+                    changeShow={changeShow} 
+                    tripName={props.name} 
+                    addActivity={props.addActivity} 
+                />
             );
-        }
-        if (show === 0) {
-            return;
         }
     }
 

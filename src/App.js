@@ -5,15 +5,29 @@ import uniqid from "uniqid";
 
 function App() {
     const [tripList, setTripList] = useState([]);
+    const [activityList, setActivityList] = useState([]);
 
     const addTrip = (trip) => {
         setTripList(tripList.concat(trip));
     }
+
+    const addActivity = (activity) => {
+        setActivityList(activityList.concat(activity));
+    }
+
+   
     
     const showTrips = tripList.map(trip => {
+
             return (
                 <ul key={uniqid()}>
-                    <li><Trip name={trip} /></li>
+                    <li>
+                        <Trip 
+                            name={trip} 
+                            activityList={activityList}
+                            addActivity={addActivity}
+                          />
+                      </li>
                 </ul>
             );
     });

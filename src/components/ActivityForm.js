@@ -22,9 +22,22 @@ function ActivityForm(props) {
         setNotes(e.target.value);
     }
 
+    const createActivity = (name, time, location, notes, tripName) => {
+        let newActivity = {
+            name: name,
+            time: time,
+            location: location,
+            notes: notes,
+            tripName: tripName,
+        };
+        props.changeShow(0);
+        return newActivity;
+    }
+
     const buttonClick = (e) => {
         e.preventDefault();
-        props.addActivity(name, time, location, notes);
+        let newActivity = createActivity(name, time, location, notes, props.tripName);
+        props.addActivity(newActivity);
     }
 
     return (
