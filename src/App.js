@@ -33,7 +33,7 @@ function App() {
     return (
       <div className="App">
         <h1>Trip Planner</h1>
-        <TripForm addTrip={addTrip} />
+        <TripForm addTrip={addTrip} tripList={tripList} />
         {showTrips}
       </div>
     );

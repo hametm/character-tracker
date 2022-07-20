@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function EditActivity(props) {
     const [name, setName] = useState(props.name);
@@ -28,6 +28,16 @@ function EditActivity(props) {
         editActivity();
     }
 
+    useEffect(() => {
+        checkForErrors();
+    });
+
+    const checkForErrors = () => {
+        const submitButton = document.getElementById("activityEdit");
+        if (name === "") submitButton.disabled = true;
+        else submitButton.disabled = false;
+    }
+
     const editActivity = () => {
         for (let i = 0; i < props.activityList.length; i++) {
             let activity = props.activityList[i];
@@ -51,7 +61,7 @@ function EditActivity(props) {
             <input type="text" id="location" onChange={handleLocationChange} value={location}  />
             <label htmlFor="notes">Notes</label>
             <input type="text" id="notes" onChange={handleNotesChange} value={notes} />
-            <button id="submit" onClick={buttonClick}>Submit</button>
+            <input type ="submit" id="activityEdit" onClick={buttonClick} />
         </form>
       );
 }
