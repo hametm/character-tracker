@@ -7,6 +7,7 @@ import uniqid from "uniqid";
 function Trip(props) {
 
     const [activityList, setActivityList] = useState([]);
+    const [show, setShow] = useState(0);
 
     const addActivity = (name, time, location, notes) => {
         let newActivity = {
@@ -16,6 +17,7 @@ function Trip(props) {
             notes: notes,
         };
         setActivityList(activityList.concat(newActivity));
+        setShow(0);
     }
 
     const showActivities = activityList.map(activity => {
@@ -33,10 +35,22 @@ function Trip(props) {
         );
     });
 
+    const showActivityForm = () => {
+        if (show === 1) {
+            return (
+                <ActivityForm addActivity={addActivity} />
+            );
+        }
+        if (show === 0) {
+            return;
+        }
+    }
+
     return (
         <div>
             <h2>{props.name}</h2>
-            <ActivityForm addActivity={addActivity} />
+            <button onClick={() => setShow(1)}>New activity</button>
+            {showActivityForm()}
             {showActivities}
         </div>
     );

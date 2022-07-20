@@ -10,7 +10,7 @@ function App() {
         setTripList(tripList.concat(trip));
     }
     
-    const displayTrips = tripList.map(trip => {
+    const showTrips = tripList.map(trip => {
             return (
                 <ul key={uniqid()}>
                     <li><Trip name={trip} /></li>
@@ -22,7 +22,7 @@ function App() {
       <div className="App">
         <h1>Trip Planner</h1>
         <TripForm addTrip={addTrip} />
-        {displayTrips}
+        {showTrips}
       </div>
     );
 }

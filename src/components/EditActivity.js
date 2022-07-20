@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
 function EditActivity(props) {
-    const [name, setName] = useState("");
-    const [time, setTime] = useState("");
-    const [location, setLocation] = useState("");
-    const [notes, setNotes] = useState("");
+    const [name, setName] = useState(props.name);
+    const [time, setTime] = useState(props.time);
+    const [location, setLocation] = useState(props.location);
+    const [notes, setNotes] = useState(props.notes);
 
     const handleNameChange = (e) => {
         setName(e.target.value);
@@ -31,13 +31,13 @@ function EditActivity(props) {
         <form action="">
             <legend>Edit Activity</legend>
             <label htmlFor="activityName"></label>
-            <input type="text" id="activityName" onChange={handleNameChange} placeholder={props.name} />
+            <input type="text" id="activityName" onChange={handleNameChange} value={name} />
             <label htmlFor="time"></label>
-            <input type="time" id="time" onChange={handleTimeChange} placeholder={props.time} />
+            <input type="time" id="time" onChange={handleTimeChange} value={time} />
             <label htmlFor="location">Location</label>
-            <input type="text" id="location" onChange={handleLocationChange} placeholder={props.location}  />
+            <input type="text" id="location" onChange={handleLocationChange} value={location}  />
             <label htmlFor="notes">Notes</label>
-            <input type="text" id="notes" onChange={handleNotesChange} placeholder={props.notes} />
+            <input type="text" id="notes" onChange={handleNotesChange} value={notes} />
             <button id="submit" onClick={buttonClick}>Submit</button>
         </form>
       );
