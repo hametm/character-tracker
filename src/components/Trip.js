@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Activity from "./Activity";
 import ActivityForm from "./ActivityForm";
+import EditActivity from "./EditActivity";
 import uniqid from "uniqid";
 
 function Trip(props) {
 
-const [activityList, setActivityList] = useState([]);
+    const [activityList, setActivityList] = useState([]);
 
     const addActivity = (name, time, location, notes) => {
         let newActivity = {
@@ -15,10 +16,9 @@ const [activityList, setActivityList] = useState([]);
             notes: notes,
         };
         setActivityList(activityList.concat(newActivity));
-        console.log(activityList);
     }
 
-    const displayActivities = activityList.map(activity => {
+    const showActivities = activityList.map(activity => {
         return (
             <ul key={uniqid()}>
                 <li>
@@ -37,7 +37,7 @@ const [activityList, setActivityList] = useState([]);
         <div>
             <h2>{props.name}</h2>
             <ActivityForm addActivity={addActivity} />
-            {displayActivities}
+            {showActivities}
         </div>
     );
 

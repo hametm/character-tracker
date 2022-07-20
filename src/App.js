@@ -8,7 +8,6 @@ function App() {
 
     const addTrip = (trip) => {
         setTripList(tripList.concat(trip));
-        console.log(tripList);
     }
     
     const displayTrips = tripList.map(trip => {
