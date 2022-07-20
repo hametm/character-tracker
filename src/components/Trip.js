@@ -24,6 +24,7 @@ function Trip(props) {
                             tripName={activity.tripName}
                             activityList={props.activityList}
                             index={activity.index}
+                            removeActivity={props.removeActivity}
                         />
                     </li>
                 </ul>

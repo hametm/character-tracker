@@ -16,7 +16,14 @@ function Activity(props) {
         setShow(1);
     }
 
-    
+    const removeCompleteActivity = (e) => {
+        let index = e.target.id;
+        for (let i = 0; i < props.activityList.length; i++) {
+            if (props.activityList[i].index === index) {
+                props.removeActivity(props.activityList[i]);
+            }
+        }
+    }
 
     const showEditForm = () => {
         return (
@@ -36,6 +43,7 @@ function Activity(props) {
     const showActivity = () => {
         return (
             <div>
+                <button id={props.index} onClick={removeCompleteActivity}>X</button>
                 <h3>{name}</h3>
                 <p>{time}</p>
                 <p>{location}</p>

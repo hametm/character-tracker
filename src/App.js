@@ -14,6 +14,10 @@ function App() {
     const addActivity = (activity) => {
         setActivityList(activityList.concat(activity));
     }
+
+    const removeActivity = (activity) => {
+        setActivityList(activityList.filter(x => x !== activity))
+    }
     
     const showTrips = tripList.map(trip => {
 
@@ -24,6 +28,7 @@ function App() {
                             name={trip} 
                             activityList={activityList}
                             addActivity={addActivity}
+                            removeActivity={removeActivity}
                           />
                       </li>
                 </ul>
