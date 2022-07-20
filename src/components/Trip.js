@@ -21,6 +21,9 @@ function Trip(props) {
                             time={activity.time} 
                             location = {activity.location}
                             notes = {activity.notes}
+                            tripName={activity.tripName}
+                            activityList={props.activityList}
+                            index={activity.index}
                         />
                     </li>
                 </ul>
@@ -36,6 +39,7 @@ function Trip(props) {
                     changeShow={changeShow} 
                     tripName={props.name} 
                     addActivity={props.addActivity} 
+                    activityList={props.activityList}
                 />
             );
         }

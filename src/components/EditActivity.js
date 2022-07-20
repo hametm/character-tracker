@@ -25,6 +25,19 @@ function EditActivity(props) {
     const buttonClick = (e) => {
         e.preventDefault();
         props.onEditClick(name, time, location, notes);
+        editActivity();
+    }
+
+    const editActivity = () => {
+        for (let i = 0; i < props.activityList.length; i++) {
+            let activity = props.activityList[i];
+            if (activity.index === props.index) {
+                activity.name = name;
+                activity.time = time;
+                activity.location = location;
+                activity.notes = notes;
+            }
+        }
     }
 
     return (

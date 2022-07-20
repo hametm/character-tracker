@@ -16,6 +16,8 @@ function Activity(props) {
         setShow(1);
     }
 
+    
+
     const showEditForm = () => {
         return (
             <EditActivity
@@ -24,6 +26,9 @@ function Activity(props) {
                 location={location}
                 notes={notes}
                 onEditClick={onEditClick}
+                tripName={props.tripName}
+                activityList={props.activityList}
+                index={props.index}
             />
         );
     }

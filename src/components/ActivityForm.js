@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import uniqid from "uniqid";
 
 function ActivityForm(props) {
     const [name, setName] = useState("");
@@ -22,13 +23,14 @@ function ActivityForm(props) {
         setNotes(e.target.value);
     }
 
-    const createActivity = (name, time, location, notes, tripName) => {
+    const createActivity = () => {
         let newActivity = {
             name: name,
             time: time,
             location: location,
             notes: notes,
-            tripName: tripName,
+            tripName: props.tripName,
+            index: uniqid(),
         };
         props.changeShow(0);
         return newActivity;
@@ -36,7 +38,7 @@ function ActivityForm(props) {
 
     const buttonClick = (e) => {
         e.preventDefault();
-        let newActivity = createActivity(name, time, location, notes, props.tripName);
+        let newActivity = createActivity();
         props.addActivity(newActivity);
     }
 

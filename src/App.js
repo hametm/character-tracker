@@ -14,8 +14,6 @@ function App() {
     const addActivity = (activity) => {
         setActivityList(activityList.concat(activity));
     }
-
-   
     
     const showTrips = tripList.map(trip => {
 
