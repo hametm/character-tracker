@@ -11,6 +11,10 @@ function App() {
         setTripList(tripList.concat(trip));
     }
 
+    const removeTrip = (trip) => {
+        setTripList(tripList.filter(x => x !== trip))
+    }
+
     const addActivity = (activity) => {
         setActivityList(activityList.concat(activity));
     }
@@ -29,6 +33,8 @@ function App() {
                             activityList={activityList}
                             addActivity={addActivity}
                             removeActivity={removeActivity}
+                            removeTrip={removeTrip}
+                            tripList={tripList}
                           />
                       </li>
                 </ul>

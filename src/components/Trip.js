@@ -11,6 +11,15 @@ function Trip(props) {
         setShow(num);
     }   
 
+    const removeCompleteTrip = (e) => {
+        let name = e.target.id;
+        for (let i = 0; i < props.tripList.length; i++) {
+            if (props.tripList[i] === name) {
+                props.removeTrip(props.tripList[i]);
+            }
+        }
+    }
+
     const showActivities = props.activityList.map(activity => {
         if (activity.tripName === props.name) {
             return (
@@ -48,6 +57,7 @@ function Trip(props) {
 
     return (
         <div>
+            <button id={props.name} onClick={removeCompleteTrip}>X</button>
             <h2>{props.name}</h2>
             <button onClick={() => setShow(1)}>New activity</button>
             {showActivityForm()}
