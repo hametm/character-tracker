@@ -4,23 +4,25 @@ import EditTvShow from "./EditTvShow";
 function TvShow(props) {
     const [show, setShow] = useState(1);
     const [name, setName] = useState(props.name);
-    const [time, setTime] = useState(props.time);
-    const [location, setLocation] = useState(props.location);
-    const [notes, setNotes] = useState(props.notes);
+    const [genre, setGenre] = useState(props.genre);
+    const [platform, setPlatform] = useState(props.platform);
+    const [description, setDescription] = useState(props.description);
+    const [length, setLength] = useState(props.length);
 
-    const onEditClick = (newName, newTime, newLocation, newNotes) => {
+    const onEditClick = (newName, newGenre, newPlatform, newDescription, newLength) => {
         setName(newName);
-        setTime(newTime);
-        setLocation(newLocation);
-        setNotes(newNotes);
+        setPlatform(newGenre);
+        setPlatform(newPlatform);
+        setDescription(newDescription);
+        setLength(newLength);
         setShow(1);
     }
 
     const removeCompleteTvShow = (e) => {
         let index = e.target.id;
-        for (let i = 0; i < props.tvshowList.length; i++) {
-            if (props.tvshowList[i].index === index) {
-                props.removeTvShow(props.tvshowList[i]);
+        for (let i = 0; i < props.tvShowList.length; i++) {
+            if (props.tvShowList[i].index === index) {
+                props.removeTvShow(props.tvShowList[i]);
             }
         }
     }
@@ -29,12 +31,12 @@ function TvShow(props) {
         return (
             <EditTvShow
                 name={name}
-                time={time}
-                location={location}
-                notes={notes}
+                platform={platform}
+                description={description}
+                length={length}
                 onEditClick={onEditClick}
                 categoryName={props.categoryName}
-                tvshowList={props.tvshowList}
+                tvShowList={props.tvShowList}
                 index={props.index}
             />
         );
@@ -45,9 +47,10 @@ function TvShow(props) {
             <div>
                 <button id={props.index} onClick={removeCompleteTvShow}>X</button>
                 <h3>{name}</h3>
-                <p>{time}</p>
-                <p>{location}</p>
-                <p>{notes}</p>
+                <p>{genre}</p>
+                <p>{platform}</p>
+                <p>{description}</p>
+                <p>{length}</p>
                 <button onClick={() => setShow(0)}>Edit</button>
             </div>
         );

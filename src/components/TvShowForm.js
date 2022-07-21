@@ -3,24 +3,29 @@ import uniqid from "uniqid";
 
 function TvShowForm(props) {
     const [name, setName] = useState("");
-    const [time, setTime] = useState("");
-    const [location, setLocation] = useState("");
-    const [notes, setNotes] = useState("");
+    const [genre, setGenre] = useState("");
+    const [platform, setPlatform] = useState("");
+    const [description, setDescription] = useState("");
+    const [length, setLength] = useState("");
 
     const handleNameChange = (e) => {
         setName(e.target.value);
     }
 
-    const handleTimeChange = (e) => {
-        setTime(e.target.value);
+    const handleGenreChange = (e) => {
+        setGenre(e.target.value);
     }
 
-    const handleLocationChange = (e) => {
-        setLocation(e.target.value);
+    const handlePlatformChange = (e) => {
+        setPlatform(e.target.value);
     }
 
-    const handleNotesChange = (e) => {
-        setNotes(e.target.value);
+    const handleDescriptionChange = (e) => {
+        setDescription(e.target.value);
+    }
+
+    const handleLengthChange = (e) => {
+        setLength(e.target.value);
     }
 
     useEffect(() => {
@@ -30,9 +35,9 @@ function TvShowForm(props) {
     const createTvShow = () => {
         let newTvShow = {
             name: name,
-            time: time,
-            location: location,
-            notes: notes,
+            platform: platform,
+            description: description,
+            length: length,
             categoryName: props.categoryName,
             index: uniqid(),
         };
@@ -47,7 +52,7 @@ function TvShowForm(props) {
     }
 
     const checkForErrors = () => {
-        const submitButton = document.getElementById("tvshowSubmit");
+        const submitButton = document.getElementById("tvShowSubmit");
         if (name === "") submitButton.disabled = true;
         else submitButton.disabled = false;
     }
@@ -55,15 +60,15 @@ function TvShowForm(props) {
     return (
         <form action="">
             <legend>New TvShow</legend>
-            <label htmlFor="tvshowName"></label>
-            <input type="text" id="tvshowName" onChange={handleNameChange} />
-            <label htmlFor="time"></label>
-            <input type="time" id="time" onChange={handleTimeChange} />
-            <label htmlFor="location">Location</label>
-            <input type="text" id="location" onChange={handleLocationChange} />
-            <label htmlFor="notes">Notes</label>
-            <input type="text" id="notes" onChange={handleNotesChange} />
-            <input type="submit" id="tvshowSubmit" onClick={buttonClick} />
+            <label htmlFor="tvShowName">Name</label>
+            <input type="text" id="tvShowName" onChange={handleNameChange} />
+            <label htmlFor="platform">Streaming platform</label>
+            <input type="platform" id="platform" onChange={handlePlatformChange} />
+            <label htmlFor="description">Description</label>
+            <input type="text" id="description" onChange={handleDescriptionChange} />
+            <label htmlFor="length">Length</label>
+            <input type="text" id="length" onChange={handleLengthChange} />
+            <input type="submit" id="tvShowSubmit" onClick={buttonClick} />
         </form>
       );
 }

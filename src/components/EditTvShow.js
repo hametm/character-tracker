@@ -2,29 +2,34 @@ import React, { useState, useEffect } from "react";
 
 function EditTvShow(props) {
     const [name, setName] = useState(props.name);
-    const [time, setTime] = useState(props.time);
-    const [location, setLocation] = useState(props.location);
-    const [notes, setNotes] = useState(props.notes);
+    const [genre, setGenre] = useState(props.genre);
+    const [platform, setPlatform] = useState(props.platform);
+    const [description, setDescription] = useState(props.description);
+    const [length, setLength] = useState(props.length);
 
     const handleNameChange = (e) => {
         setName(e.target.value);
     }
 
-    const handleTimeChange = (e) => {
-        setTime(e.target.value);
+    const handleGenreChange = (e) => {
+        setGenre(e.target.value);
     }
 
-    const handleLocationChange = (e) => {
-        setLocation(e.target.value);
+    const handlePlatformChange = (e) => {
+        setPlatform(e.target.value);
     }
 
-    const handleNotesChange = (e) => {
-        setNotes(e.target.value);
+    const handleDescriptionChange = (e) => {
+        setDescription(e.target.value);
+    }
+
+    const handleLengthChange = (e) => {
+        setLength(e.target.value);
     }
 
     const buttonClick = (e) => {
         e.preventDefault();
-        props.onEditClick(name, time, location, notes);
+        props.onEditClick(name, genre, platform, description, length);
         editTvShow();
     }
 
@@ -33,19 +38,20 @@ function EditTvShow(props) {
     });
 
     const checkForErrors = () => {
-        const submitButton = document.getElementById("tvshowEdit");
+        const submitButton = document.getElementById("tvShowEdit");
         if (name === "") submitButton.disabled = true;
         else submitButton.disabled = false;
     }
 
     const editTvShow = () => {
-        for (let i = 0; i < props.tvshowList.length; i++) {
-            let tvshow = props.tvshowList[i];
-            if (tvshow.index === props.index) {
-                tvshow.name = name;
-                tvshow.time = time;
-                tvshow.location = location;
-                tvshow.notes = notes;
+        for (let i = 0; i < props.tvShowList.length; i++) {
+            let tvShow = props.tvShowList[i];
+            if (tvShow.index === props.index) {
+                tvShow.name = name;
+                tvShow.genre = genre;
+                tvShow.platform = platform;
+                tvShow.description = description;
+                tvShow.length = length;
             }
         }
     }
@@ -53,15 +59,17 @@ function EditTvShow(props) {
     return (
         <form action="">
             <legend>Edit TvShow</legend>
-            <label htmlFor="tvshowName"></label>
-            <input type="text" id="tvshowName" onChange={handleNameChange} value={name} />
-            <label htmlFor="time"></label>
-            <input type="time" id="time" onChange={handleTimeChange} value={time} />
-            <label htmlFor="location">Location</label>
-            <input type="text" id="location" onChange={handleLocationChange} value={location}  />
-            <label htmlFor="notes">Notes</label>
-            <input type="text" id="notes" onChange={handleNotesChange} value={notes} />
-            <input type ="submit" id="tvshowEdit" onClick={buttonClick} />
+            <label htmlFor="tvShowName">Name</label>
+            <input type="text" id="tvShowName" onChange={handleNameChange} value={name} />
+            <label htmlFor="tvShowGenre">Genre</label>
+            <input type="text" id="tvShowGenre" onChange={handleGenreChange} value={name} />
+            <label htmlFor="platform">Streaming platform</label>
+            <input type="platform" id="platform" onChange={handlePlatformChange} value={platform} />
+            <label htmlFor="description">Description</label>
+            <input type="text" id="description" onChange={handleDescriptionChange} value={description}  />
+            <label htmlFor="length">Length</label>
+            <input type="text" id="length" onChange={handleLengthChange} value={length} />
+            <input type ="submit" id="tvShowEdit" onClick={buttonClick} />
         </form>
       );
 }

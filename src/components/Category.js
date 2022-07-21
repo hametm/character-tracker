@@ -20,19 +20,20 @@ function Category(props) {
         }
     }
 
-    const showActivities = props.tvshowList.map(tvshow => {
-        if (tvshow.categoryName === props.name) {
+    const showActivities = props.tvShowList.map(tvShow => {
+        if (tvShow.categoryName === props.name) {
             return (
                 <ul key={uniqid()}>
                     <li>
                         <TvShow 
-                            name={tvshow.name} 
-                            time={tvshow.time} 
-                            location = {tvshow.location}
-                            notes = {tvshow.notes}
-                            categoryName={tvshow.categoryName}
-                            tvshowList={props.tvshowList}
-                            index={tvshow.index}
+                            name={tvShow.name} 
+                            genre={tvShow.genre} 
+                            platform={tvShow.platform} 
+                            description = {tvShow.description}
+                            length = {tvShow.length}
+                            categoryName={tvShow.categoryName}
+                            tvShowList={props.tvShowList}
+                            index={tvShow.index}
                             removeTvShow={props.removeTvShow}
                         />
                     </li>
@@ -49,7 +50,7 @@ function Category(props) {
                     changeShowForm={changeShowForm} 
                     categoryName={props.name} 
                     addTvShow={props.addTvShow} 
-                    tvshowList={props.tvshowList}
+                    tvShowList={props.tvShowList}
                 />
             );
         }

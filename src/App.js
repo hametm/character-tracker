@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import CategoryForm from "./components/CategoryForm";
 import Category from "./components/Category";
 import uniqid from "uniqid";
+import "./styles/style.css";
 
 function App() {
     const [categoryList, setCategoryList] = useState([]);
-    const [tvshowList, setTvShowList] = useState([]);
+    const [tvShowList, setTvShowList] = useState([]);
     const [show, setShow] = useState(0);
 
     const addCategory = (category) => {
@@ -17,12 +18,12 @@ function App() {
         setShow(0);
     }
 
-    const addTvShow = (tvshow) => {
-        setTvShowList(tvshowList.concat(tvshow));
+    const addTvShow = (tvShow) => {
+        setTvShowList(tvShowList.concat(tvShow));
     }
 
-    const removeTvShow = (tvshow) => {
-        setTvShowList(tvshowList.filter(x => x !== tvshow));
+    const removeTvShow = (tvShow) => {
+        setTvShowList(tvShowList.filter(x => x !== tvShow));
     }
 
     const toggle = (e) => {
@@ -35,7 +36,7 @@ function App() {
             return (
                 <Category 
                     name={category} 
-                    tvshowList={tvshowList}
+                    tvShowList={tvShowList}
                     addTvShow={addTvShow}
                     removeTvShow={removeTvShow}
                     removeCategory={removeCategory}
@@ -45,7 +46,7 @@ function App() {
         }
     }
     
-    const showCategorys = categoryList.map(category => {
+    const showCategories = categoryList.map(category => {
             return (
                 <ul key={uniqid()}>
                     <li>
@@ -58,9 +59,14 @@ function App() {
 
     return (
       <div className="App">
-        <h1>What to Watch</h1>
-        <CategoryForm addCategory={addCategory} categoryList={categoryList} />
-        {showCategorys}
+        <header>
+            <h1>What to Watch</h1>
+        </header>
+        <main>
+            <CategoryForm addCategory={addCategory} categoryList={categoryList} />
+            {showCategories}
+        </main>
+        <footer>Made by Morgan</footer>
       </div>
     );
 }
