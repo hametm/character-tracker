@@ -27,33 +27,35 @@ function App() {
     }
 
     const toggle = (e) => {
-        if (show === e.target.id) setShow(0);
-        else if (show === 0) setShow(e.target.id);
+        setShow(e.target.id);
+        // if (show === e.target.id) setShow(0);
+        // else if (show === 0) setShow(e.target.id);
     }
 
-    const showCategory = (category) => {
-        if (show === `${category}Button`) {
-            return (
-                <Category 
-                    name={category} 
-                    tvShowList={tvShowList}
-                    addTvShow={addTvShow}
-                    removeTvShow={removeTvShow}
-                    removeCategory={removeCategory}
-                    categoryList={categoryList}
-                />
-            )
+    const showCategory = () => {
+        for (let i = 0; i < categoryList.length; i++) {
+            if (show === `${categoryList[i]}Button`) {
+                return (
+                    <Category 
+                        name={categoryList[i]} 
+                        tvShowList={tvShowList}
+                        addTvShow={addTvShow}
+                        removeTvShow={removeTvShow}
+                        removeCategory={removeCategory}
+                        categoryList={categoryList}
+                    />
+                )
+            }
         }
+        
     }
     
     const showCategories = categoryList.map(category => {
             return (
-                <ul key={uniqid()}>
-                    <li>
-                        <button id={`${category}Button`} onClick={toggle}>{category}</button>
-                        {showCategory(category)}
-                      </li>
-                </ul>
+                <li key={uniqid()}>
+                    <button id={`${category}Button`} onClick={toggle}>{category}</button>
+                    <button id={category} onClick={() => removeCategory(category)}>X</button>
+                </li>
             );
     });
 
@@ -63,8 +65,15 @@ function App() {
             <h1>What to Watch</h1>
         </header>
         <main>
-            <CategoryForm addCategory={addCategory} categoryList={categoryList} />
-            {showCategories}
+            <div className="sidebar">
+                <CategoryForm addCategory={addCategory} categoryList={categoryList} />
+                <ul className="categoryContainer" key={uniqid()}>
+                    {showCategories}
+                </ul>
+            </div>
+            <div className="display">
+                {showCategory()}
+            </div>
         </main>
         <footer>Made by Morgan</footer>
       </div>

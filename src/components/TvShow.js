@@ -11,7 +11,7 @@ function TvShow(props) {
 
     const onEditClick = (newName, newGenre, newPlatform, newDescription, newLength) => {
         setName(newName);
-        setPlatform(newGenre);
+        setGenre(newGenre);
         setPlatform(newPlatform);
         setDescription(newDescription);
         setLength(newLength);

@@ -11,14 +11,7 @@ function Category(props) {
         setShowForm(num);
     }    
 
-    const removeCompleteCategory = (e) => {
-        let name = e.target.id;
-        for (let i = 0; i < props.categoryList.length; i++) {
-            if (props.categoryList[i] === name) {
-                props.removeCategory(props.categoryList[i]);
-            }
-        }
-    }
+    
 
     const showActivities = props.tvShowList.map(tvShow => {
         if (tvShow.categoryName === props.name) {
@@ -63,8 +56,6 @@ function Category(props) {
 
     return (
         <div>
-            <button id={props.name} onClick={removeCompleteCategory}>X</button>
-            <h2>{props.name}</h2>
             <div>
                 <button onClick={toggleForm}>Add show</button>
                 {showTvShowForm()}
