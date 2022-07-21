@@ -28,14 +28,13 @@ function App() {
 
     const toggle = (e) => {
         setShow(e.target.id);
-        console.log("Show: " + show);
         // if (show === e.target.id) setShow(0);
         // else if (show === 0) setShow(e.target.id);
     }
 
     const showCategory = () => {
         for (let i = 0; i < categoryList.length; i++) {
-            if (show === `${categoryList[i]}Button` || categoryList.length === 1) {
+            if (show === `${categoryList[i]}Button`) {
                 return (
                     <Category 
                         name={categoryList[i]} 
