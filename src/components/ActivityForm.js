@@ -36,7 +36,6 @@ function ActivityForm(props) {
             tripName: props.tripName,
             index: uniqid(),
         };
-        props.changeShow(0);
         return newActivity;
     }
 
@@ -44,7 +43,7 @@ function ActivityForm(props) {
         e.preventDefault();
         let newActivity = createActivity();
         props.addActivity(newActivity);
-         
+        props.changeShowForm(0);
     }
 
     const checkForErrors = () => {
