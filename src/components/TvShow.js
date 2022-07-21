@@ -22,6 +22,7 @@ function TvShow(props) {
                 categoryName={props.categoryName}
                 tvShowList={props.tvShowList}
                 index={props.index}
+                changeShow={changeShowShow}
             />
         );
     }
@@ -29,12 +30,14 @@ function TvShow(props) {
     const showTvShow = () => {
         return (
             <li className="tvShow">
-                <div className="tvShowButtonContainer">
-                    <button onClick={() => toggleDetails(props.index)}>Expand</button>
-                    <button onClick={() => setShowShow(0)}>Edit</button>
-                    <button id={props.index} onClick={removeTvShow}>X</button>
+                <div className="tvShowCard">
+                    <h3>{name}</h3>
+                    <div className="tvShowButtonContainer">
+                        <button onClick={() => toggleDetails(props.index)}>Expand</button>
+                        <button onClick={() => setShowShow(0)}>Edit</button>
+                        <button id={props.index} onClick={removeTvShow}>X</button>
+                    </div>
                 </div>
-                <h3>{name}</h3>
                 {showTvShowDetails(props.index)}
             </li>
         );
@@ -59,6 +62,9 @@ function TvShow(props) {
         setPlatform(newPlatform);
         setDescription(newDescription);
         setLength(newLength);
+    }
+
+    const changeShowShow = () => {
         setShowShow(1);
     }
 
@@ -72,8 +78,8 @@ function TvShow(props) {
     }
 
     const toggleShow = () => {
-        if (showShow === 1) return <div>{showTvShow()}</div>
-        if (showShow === 0) return <div>{showEditForm()}</div>
+        if (showShow === 1) return showTvShow()
+        if (showShow === 0) return showEditForm()
     }
 
     const toggleDetails = (index) => {

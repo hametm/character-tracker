@@ -51,6 +51,12 @@ main {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.tvShowCard {
+    display: flex;
 }
 
 footer {
