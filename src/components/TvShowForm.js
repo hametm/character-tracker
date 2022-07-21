@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import uniqid from "uniqid";
 
-function ActivityForm(props) {
+function TvShowForm(props) {
     const [name, setName] = useState("");
     const [time, setTime] = useState("");
     const [location, setLocation] = useState("");
@@ -27,45 +27,45 @@ function ActivityForm(props) {
         checkForErrors();
     });
 
-    const createActivity = () => {
-        let newActivity = {
+    const createTvShow = () => {
+        let newTvShow = {
             name: name,
             time: time,
             location: location,
             notes: notes,
-            tripName: props.tripName,
+            categoryName: props.categoryName,
             index: uniqid(),
         };
-        return newActivity;
+        return newTvShow;
     }
 
     const buttonClick = (e) => {
         e.preventDefault();
-        let newActivity = createActivity();
-        props.addActivity(newActivity);
+        let newTvShow = createTvShow();
+        props.addTvShow(newTvShow);
         props.changeShowForm(0);
     }
 
     const checkForErrors = () => {
-        const submitButton = document.getElementById("activitySubmit");
+        const submitButton = document.getElementById("tvshowSubmit");
         if (name === "") submitButton.disabled = true;
         else submitButton.disabled = false;
     }
 
     return (
         <form action="">
-            <legend>New Activity</legend>
-            <label htmlFor="activityName"></label>
-            <input type="text" id="activityName" onChange={handleNameChange} />
+            <legend>New TvShow</legend>
+            <label htmlFor="tvshowName"></label>
+            <input type="text" id="tvshowName" onChange={handleNameChange} />
             <label htmlFor="time"></label>
             <input type="time" id="time" onChange={handleTimeChange} />
             <label htmlFor="location">Location</label>
             <input type="text" id="location" onChange={handleLocationChange} />
             <label htmlFor="notes">Notes</label>
             <input type="text" id="notes" onChange={handleNotesChange} />
-            <input type="submit" id="activitySubmit" onClick={buttonClick} />
+            <input type="submit" id="tvshowSubmit" onClick={buttonClick} />
         </form>
       );
 }
 
-export default ActivityForm;
+export default TvShowForm;

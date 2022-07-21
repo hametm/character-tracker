@@ -1,28 +1,28 @@
 import React, { useState } from "react";
-import TripForm from "./components/TripForm";
-import Trip from "./components/Trip";
+import CategoryForm from "./components/CategoryForm";
+import Category from "./components/Category";
 import uniqid from "uniqid";
 
 function App() {
-    const [tripList, setTripList] = useState([]);
-    const [activityList, setActivityList] = useState([]);
+    const [categoryList, setCategoryList] = useState([]);
+    const [tvshowList, setTvShowList] = useState([]);
     const [show, setShow] = useState(0);
 
-    const addTrip = (trip) => {
-        setTripList(tripList.concat(trip));
+    const addCategory = (category) => {
+        setCategoryList(categoryList.concat(category));
     }
 
-    const removeTrip = (trip) => {
-        setTripList(tripList.filter(x => x !== trip));
+    const removeCategory = (category) => {
+        setCategoryList(categoryList.filter(x => x !== category));
         setShow(0);
     }
 
-    const addActivity = (activity) => {
-        setActivityList(activityList.concat(activity));
+    const addTvShow = (tvshow) => {
+        setTvShowList(tvshowList.concat(tvshow));
     }
 
-    const removeActivity = (activity) => {
-        setActivityList(activityList.filter(x => x !== activity));
+    const removeTvShow = (tvshow) => {
+        setTvShowList(tvshowList.filter(x => x !== tvshow));
     }
 
     const toggle = (e) => {
@@ -30,27 +30,27 @@ function App() {
         else if (show === 0) setShow(e.target.id);
     }
 
-    const showTrip = (trip) => {
-        if (show === `${trip}Button`) {
+    const showCategory = (category) => {
+        if (show === `${category}Button`) {
             return (
-                <Trip 
-                    name={trip} 
-                    activityList={activityList}
-                    addActivity={addActivity}
-                    removeActivity={removeActivity}
-                    removeTrip={removeTrip}
-                    tripList={tripList}
+                <Category 
+                    name={category} 
+                    tvshowList={tvshowList}
+                    addTvShow={addTvShow}
+                    removeTvShow={removeTvShow}
+                    removeCategory={removeCategory}
+                    categoryList={categoryList}
                 />
             )
         }
     }
     
-    const showTrips = tripList.map(trip => {
+    const showCategorys = categoryList.map(category => {
             return (
                 <ul key={uniqid()}>
                     <li>
-                        <button id={`${trip}Button`} onClick={toggle}>{trip}</button>
-                        {showTrip(trip)}
+                        <button id={`${category}Button`} onClick={toggle}>{category}</button>
+                        {showCategory(category)}
                       </li>
                 </ul>
             );
@@ -58,9 +58,9 @@ function App() {
 
     return (
       <div className="App">
-        <h1>Trip Planner</h1>
-        <TripForm addTrip={addTrip} tripList={tripList} />
-        {showTrips}
+        <h1>What to Watch</h1>
+        <CategoryForm addCategory={addCategory} categoryList={categoryList} />
+        {showCategorys}
       </div>
     );
 }

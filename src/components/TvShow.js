@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import EditActivity from "./EditActivity";
+import EditTvShow from "./EditTvShow";
 
-function Activity(props) {
+function TvShow(props) {
     const [show, setShow] = useState(1);
     const [name, setName] = useState(props.name);
     const [time, setTime] = useState(props.time);
@@ -16,34 +16,34 @@ function Activity(props) {
         setShow(1);
     }
 
-    const removeCompleteActivity = (e) => {
+    const removeCompleteTvShow = (e) => {
         let index = e.target.id;
-        for (let i = 0; i < props.activityList.length; i++) {
-            if (props.activityList[i].index === index) {
-                props.removeActivity(props.activityList[i]);
+        for (let i = 0; i < props.tvshowList.length; i++) {
+            if (props.tvshowList[i].index === index) {
+                props.removeTvShow(props.tvshowList[i]);
             }
         }
     }
 
     const showEditForm = () => {
         return (
-            <EditActivity
+            <EditTvShow
                 name={name}
                 time={time}
                 location={location}
                 notes={notes}
                 onEditClick={onEditClick}
-                tripName={props.tripName}
-                activityList={props.activityList}
+                categoryName={props.categoryName}
+                tvshowList={props.tvshowList}
                 index={props.index}
             />
         );
     }
 
-    const showActivity = () => {
+    const showTvShow = () => {
         return (
             <div>
-                <button id={props.index} onClick={removeCompleteActivity}>X</button>
+                <button id={props.index} onClick={removeCompleteTvShow}>X</button>
                 <h3>{name}</h3>
                 <p>{time}</p>
                 <p>{location}</p>
@@ -57,7 +57,7 @@ function Activity(props) {
         if (show === 1) {
             return (
                 <div>
-                    {showActivity()}
+                    {showTvShow()}
                 </div>
             )
         }
@@ -78,4 +78,4 @@ function Activity(props) {
 
 }
 
-export default Activity;
+export default TvShow;

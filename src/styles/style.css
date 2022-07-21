@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    flex-grow: 1;
+}
+
+.story {
+    
+}
+
+.story-container {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 7rem;
+}
+
+.story-container li {
+    list-style-type: none;
+}
