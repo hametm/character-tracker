@@ -13,7 +13,8 @@ function App() {
     }
 
     const removeTrip = (trip) => {
-        setTripList(tripList.filter(x => x !== trip))
+        setTripList(tripList.filter(x => x !== trip));
+        setShow(0);
     }
 
     const addActivity = (activity) => {
@@ -21,7 +22,7 @@ function App() {
     }
 
     const removeActivity = (activity) => {
-        setActivityList(activityList.filter(x => x !== activity))
+        setActivityList(activityList.filter(x => x !== activity));
     }
 
     const toggle = (e) => {
