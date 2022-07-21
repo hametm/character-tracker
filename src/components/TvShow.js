@@ -47,6 +47,7 @@ function TvShow(props) {
         if (showDetails === index) {
             return (
                 <div>
+                    {/* <button onClick={() => setShowEdit(1)}>Edit</button> */}
                     <p>{genre}</p>
                     <p>{platform}</p>
                     <p>{description}</p>

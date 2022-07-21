@@ -34,7 +34,7 @@ function App() {
 
     const showCategory = () => {
         for (let i = 0; i < categoryList.length; i++) {
-            if (show === `${categoryList[i]}Button`) {
+            if (show === `${categoryList[i]}Button` || categoryList.length === 1) {
                 return (
                     <Category 
                         name={categoryList[i]} 

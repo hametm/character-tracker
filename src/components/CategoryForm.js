@@ -29,9 +29,13 @@ function CategoryForm(props) {
 
     return (
         <form action="" id="categoryForm">
-            <legend>New Category</legend>
-            <label htmlFor="categoryName"></label>
-            <input type="text" id="categoryName" onChange={handleChange} />
+            <label htmlFor="categoryName">New Category</label>
+            <input 
+                type="text" 
+                id="categoryName" 
+                onChange={handleChange} 
+                placeholder='ex. "Sunday morning"' 
+            />
             <input type="submit" id="categorySubmit" onClick={buttonClick} />
         </form>
       );
