@@ -28,6 +28,7 @@ function App() {
 
     const toggle = (e) => {
         setShow(e.target.id);
+        console.log("Show: " + show);
         // if (show === e.target.id) setShow(0);
         // else if (show === 0) setShow(e.target.id);
     }
@@ -66,7 +67,7 @@ function App() {
         </header>
         <main>
             <div className="sidebar">
-                <CategoryForm addCategory={addCategory} categoryList={categoryList} />
+                <CategoryForm addCategory={addCategory} categoryList={categoryList} toggle={toggle} />
                 <ul className="categoryContainer" key={uniqid()}>
                     {showCategoryList}
                 </ul>
