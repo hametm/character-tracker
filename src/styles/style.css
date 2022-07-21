@@ -43,6 +43,21 @@ main {
     width: 100%;
 }
 
+.popup {
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    height: 40%;
+    width: 30%;
+}
+
+.tvShowForm {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
 .tvShowContainer {
 
 }
@@ -51,12 +66,18 @@ main {
     display: flex;
     flex-direction: column;
     gap: .5rem;
-    justify-content: space-between;
-    width: 100%;
+  
 }
 
 .tvShowCard {
     display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.closeButtonContainer {
+    display: flex;
+    justify-content: flex-end;
 }
 
 footer {

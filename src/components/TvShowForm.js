@@ -45,10 +45,14 @@ function TvShowForm(props) {
         return newTvShow;
     }
 
-    const buttonClick = (e) => {
+    const submitButtonClick = (e) => {
         e.preventDefault();
         let newTvShow = createTvShow();
         props.addTvShow(newTvShow);
+        props.changeShowForm(0);
+    }
+
+    const closeButtonClick = () => {
         props.changeShowForm(0);
     }
 
@@ -59,20 +63,25 @@ function TvShowForm(props) {
     }
 
     return (
-        <form action="" >
-            <legend>New Show</legend>
-            <label htmlFor="tvShowName">Name</label>
-            <input type="text" id="tvShowName" onChange={handleNameChange} />
-            <label htmlFor="genre">Genre</label>
-            <input type="text" id="genre" onChange={handleGenreChange} />
-            <label htmlFor="platform">Streaming platform</label>
-            <input type="platform" id="platform" onChange={handlePlatformChange} />
-            <label htmlFor="description">Description</label>
-            <input type="text" id="description" onChange={handleDescriptionChange} />
-            <label htmlFor="length">Length</label>
-            <input type="text" id="length" onChange={handleLengthChange} />
-            <input type="submit" id="tvShowSubmit" onClick={buttonClick} />
-        </form>
+        <div className="popup">
+            <div className="closeButtonContainer">
+                <button onClick={closeButtonClick}>X</button>
+            </div>
+            <form action="" className="tvShowForm">
+                <legend>New Show</legend>
+                <label htmlFor="tvShowName">Name</label>
+                <input type="text" id="tvShowName" onChange={handleNameChange} />
+                <label htmlFor="genre">Genre</label>
+                <input type="text" id="genre" onChange={handleGenreChange} />
+                <label htmlFor="platform">Streaming platform</label>
+                <input type="platform" id="platform" onChange={handlePlatformChange} />
+                <label htmlFor="description">Description</label>
+                <input type="text" id="description" onChange={handleDescriptionChange} />
+                <label htmlFor="length">Length</label>
+                <input type="text" id="length" onChange={handleLengthChange} />
+                <input type="submit" id="tvShowSubmit" onClick={submitButtonClick} />
+            </form>
+        </div>
       );
 }
 

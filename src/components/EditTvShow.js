@@ -62,8 +62,8 @@ function EditTvShow(props) {
     }
 
     return (
-        <div>
-            <div>
+        <div className="popup">
+            <div className="closeButtonContainer">
                 <button onClick={closeButtonClick}>X</button>
             </div>
             <form action="">

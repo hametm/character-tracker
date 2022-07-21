@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import EditTvShow from "./EditTvShow";
 
 function TvShow(props) {
-    const [showShow, setShowShow] = useState(1); // ¯\_(ツ)_/¯
+    const [showEdit, setShowEdit] = useState(0);
     const [showDetails, setShowDetails] = useState(0);
     const [name, setName] = useState(props.name);
     const [genre, setGenre] = useState(props.genre);
@@ -22,7 +22,7 @@ function TvShow(props) {
                 categoryName={props.categoryName}
                 tvShowList={props.tvShowList}
                 index={props.index}
-                changeShow={changeShowShow}
+                changeShow={changeShowEdit}
             />
         );
     }
@@ -34,7 +34,7 @@ function TvShow(props) {
                     <h3>{name}</h3>
                     <div className="tvShowButtonContainer">
                         <button onClick={() => toggleDetails(props.index)}>Expand</button>
-                        <button onClick={() => setShowShow(0)}>Edit</button>
+                        <button onClick={() => setShowEdit(1)}>Edit</button>
                         <button id={props.index} onClick={removeTvShow}>X</button>
                     </div>
                 </div>
@@ -64,8 +64,8 @@ function TvShow(props) {
         setLength(newLength);
     }
 
-    const changeShowShow = () => {
-        setShowShow(1);
+    const changeShowEdit = () => {
+        setShowEdit(0);
     }
 
     const removeTvShow = (e) => {
@@ -78,8 +78,7 @@ function TvShow(props) {
     }
 
     const toggleShow = () => {
-        if (showShow === 1) return showTvShow()
-        if (showShow === 0) return showEditForm()
+        if (showEdit === 1) return showEditForm()
     }
 
     const toggleDetails = (index) => {
@@ -88,7 +87,10 @@ function TvShow(props) {
     }
 
     return (
-            <ul className="tvShowContainer">{toggleShow()}</ul>
+            <ul className="tvShowContainer">
+                {showTvShow()}
+                {toggleShow()}
+            </ul>
     );
 
 }
