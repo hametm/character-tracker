@@ -1,13 +1,17 @@
 :root {
-    --background: #F9F9F9;
-    --popup: #fbf7f5;
-    --sidebar: #e0bae0;
-    --purple: #937DC2;
-    --orange: #FCC5C0;
+    --background: #f2e9e4;
+    --sidebar: #ededed;
+    --selected: white;
+    --purple: #876ed4;
+    --light-purple: #ca90ee;
+    --button: rgb(2, 2, 131);
+    --button-hover: rgb(38, 38, 187);
 }
 
 body {
     margin: 0;
+    background-color: var(--purple);
+    padding: 3rem;
 }
 
 .App {
@@ -16,6 +20,10 @@ body {
     justify-content: space-between;
     min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
+    border: 3px solid black;
+    border-radius: 12px;
+    box-shadow: -3px 3px black;
+    background-color: var(--background);
 }
 
 ul, li {
@@ -45,8 +53,7 @@ button:hover {
 }
 
 header {
-    background-color: var(--purple);
-    color: white;
+    padding-left: 1rem;
 }
 
 main {
@@ -67,7 +74,13 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    background-color: var(--sidebar);
+    padding: 1rem;
+}
+
+#categoryForm {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
 .catButton {
@@ -89,7 +102,13 @@ footer {
 
 .category {
     display: flex;
-    background-color: var(--background);
+    border-radius: 8px;
+    padding: .5rem;
+
+}
+
+.category:hover {
+    background-color: var(--selected);
 }
 
 .categoryContainer li {
@@ -97,7 +116,7 @@ footer {
 }
 
 .selected {
-    background-color: grey;
+    background-color: var(--selected);
 }
 
 /* Shows */
@@ -105,6 +124,7 @@ footer {
 .display {
     width: 100%;
     padding: 1rem 3rem;
+    background-color: white;
 }
 
 .popup {
@@ -115,7 +135,7 @@ footer {
     border: 1px solid grey;
     padding: 1rem;
     box-shadow: -3px 3px var(--purple);
-    background-color: var(--popup);
+    background-color: var(--background);
 }
 
 .addButtonContainer {
@@ -154,11 +174,17 @@ footer {
 }
 
 .submitButton {
-    background-color: var(--orange);
+    background-color: var(--button);
+    color: white;
     border: none;
     border-radius: 8px;
-    padding: 5px;
-    font-size: 1rem;
+    padding: 5px 10px;
+    font-size: .9rem;
+}
+
+.submitButton:hover {
+    cursor: pointer;
+    background-color: var(--button-hover);
 }
 
 .tvShowContainer {
