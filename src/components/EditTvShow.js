@@ -64,7 +64,7 @@ function EditTvShow(props) {
     return (
         <div className="popup">
             <div className="closeButtonContainer">
-                <button onClick={closeButtonClick}>X</button>
+                <button className="popupCloseButton" onClick={closeButtonClick}>X</button>
             </div>
             <form action="">
                 <legend>Edit TvShow</legend>

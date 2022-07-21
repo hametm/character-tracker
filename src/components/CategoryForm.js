@@ -14,7 +14,7 @@ function CategoryForm(props) {
     const buttonClick = (e) => {
         e.preventDefault();
         if (!checkForErrors()) props.addCategory(category);
-        props.toggle(e);
+        props.toggle(e.target.id);
         document.getElementById("categoryForm").reset();
     }
 
@@ -37,7 +37,7 @@ function CategoryForm(props) {
                 onChange={handleChange} 
                 placeholder='ex. "Sunday morning"' 
             />
-            <input type="submit" className="categorySubmit" id={`${category}Button`} onClick={buttonClick} />
+            <input type="submit" className="categorySubmit submitButton" id={`${category}Button`} onClick={buttonClick} />
         </form>
       );
 }

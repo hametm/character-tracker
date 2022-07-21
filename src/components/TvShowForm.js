@@ -49,6 +49,7 @@ function TvShowForm(props) {
         e.preventDefault();
         let newTvShow = createTvShow();
         props.addTvShow(newTvShow);
+        props.toggle(`${props.categoryName}Button`);
         props.changeShowForm(0);
     }
 
@@ -63,25 +64,35 @@ function TvShowForm(props) {
     }
 
     return (
-        <div className="popup">
-            <div className="closeButtonContainer">
-                <button onClick={closeButtonClick}>X</button>
-            </div>
-            <form action="" className="tvShowForm">
+        <form action="" className="tvShowForm popup">
+            <div className="formHeader">
                 <legend>New Show</legend>
+                <div className="closeButtonContainer">
+                    <button onClick={closeButtonClick}>X</button>
+                </div>
+            </div>
+            <div className="formSection">
                 <label htmlFor="tvShowName">Name</label>
                 <input type="text" id="tvShowName" onChange={handleNameChange} />
+            </div>
+            <div className="formSection">
                 <label htmlFor="genre">Genre</label>
                 <input type="text" id="genre" onChange={handleGenreChange} />
+            </div>
+            <div className="formSection">
                 <label htmlFor="platform">Streaming platform</label>
-                <input type="platform" id="platform" onChange={handlePlatformChange} />
+                <input type="text" id="platform" onChange={handlePlatformChange} />
+            </div>
+            <div className="formSection">
                 <label htmlFor="description">Description</label>
                 <input type="text" id="description" onChange={handleDescriptionChange} />
+            </div>
+            <div className="formSection">
                 <label htmlFor="length">Length</label>
                 <input type="text" id="length" onChange={handleLengthChange} />
-                <input type="submit" id="tvShowSubmit" onClick={submitButtonClick} />
-            </form>
-        </div>
+            </div>
+            <input type="submit" className="submitButton" id="tvShowSubmit" onClick={submitButtonClick} />
+        </form>
       );
 }
 

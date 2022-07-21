@@ -84,7 +84,7 @@ function TvShow(props) {
 
     const toggleDetails = (index) => {
         if (showDetails === index) setShowDetails(0);
-        if (!(showDetails === index)) setShowDetails(index);
+        else setShowDetails(index);
     }
 
     return (
