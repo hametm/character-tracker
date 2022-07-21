@@ -7,6 +7,10 @@ function EditTvShow(props) {
     const [description, setDescription] = useState(props.description);
     const [length, setLength] = useState(props.length);
 
+    useEffect(() => {
+        checkForErrors();
+    });
+
     const handleNameChange = (e) => {
         setName(e.target.value);
     }
@@ -33,10 +37,6 @@ function EditTvShow(props) {
         editTvShow();
     }
 
-    useEffect(() => {
-        checkForErrors();
-    });
-
     const checkForErrors = () => {
         const submitButton = document.getElementById("tvShowEdit");
         if (name === "") submitButton.disabled = true;
@@ -61,8 +61,8 @@ function EditTvShow(props) {
             <legend>Edit TvShow</legend>
             <label htmlFor="tvShowName">Name</label>
             <input type="text" id="tvShowName" onChange={handleNameChange} value={name} />
-            <label htmlFor="tvShowGenre">Genre</label>
-            <input type="text" id="tvShowGenre" onChange={handleGenreChange} value={name} />
+            <label htmlFor="genre">Genre</label>
+            <input type="text" id="genre" onChange={handleGenreChange} value={genre} />
             <label htmlFor="platform">Streaming platform</label>
             <input type="platform" id="platform" onChange={handlePlatformChange} value={platform} />
             <label htmlFor="description">Description</label>

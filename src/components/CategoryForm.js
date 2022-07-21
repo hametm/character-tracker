@@ -3,6 +3,10 @@ import React, { useState, useEffect } from "react";
 function CategoryForm(props) {
     const [category, setCategory] = useState("");
 
+    useEffect(() => {
+        checkForErrors();
+    });
+
     const handleChange = (e) => {
         setCategory(e.target.value);
     }
@@ -12,10 +16,6 @@ function CategoryForm(props) {
         if (!checkForErrors()) props.addCategory(category);
         document.getElementById("categoryForm").reset();
     }
-
-    useEffect(() => {
-        checkForErrors();
-    });
 
     const checkForErrors = () => {
         const submitButton = document.getElementById("categorySubmit");

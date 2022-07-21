@@ -35,6 +35,7 @@ function TvShowForm(props) {
     const createTvShow = () => {
         let newTvShow = {
             name: name,
+            genre: genre,
             platform: platform,
             description: description,
             length: length,
@@ -58,10 +59,12 @@ function TvShowForm(props) {
     }
 
     return (
-        <form action="">
-            <legend>New TvShow</legend>
+        <form action="" >
+            <legend>New Show</legend>
             <label htmlFor="tvShowName">Name</label>
             <input type="text" id="tvShowName" onChange={handleNameChange} />
+            <label htmlFor="genre">Genre</label>
+            <input type="text" id="genre" onChange={handleGenreChange} />
             <label htmlFor="platform">Streaming platform</label>
             <input type="platform" id="platform" onChange={handlePlatformChange} />
             <label htmlFor="description">Description</label>

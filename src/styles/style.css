@@ -13,15 +13,16 @@ body {
 ul, li {
     margin: 0;
     padding: 0;
+    list-style-type: none;
+}
+
+h3, p {
+    margin: 0;
 }
 
 main {
     display: flex;
     flex-grow: 1;
-}
-
-.category {
-    
 }
 
 .categoryContainer {
@@ -30,10 +31,31 @@ main {
     gap: 1rem;
 }
 
+.category {
+    
+}
+
 .categoryContainer li {
     list-style-type: none;
 }
 
 .display {
     width: 100%;
+}
+
+.tvShowContainer {
+
+}
+
+.tvShow {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
 }

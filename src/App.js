@@ -50,7 +50,7 @@ function App() {
         
     }
     
-    const showCategories = categoryList.map(category => {
+    const showCategoryList = categoryList.map(category => {
             return (
                 <li key={uniqid()}>
                     <button id={`${category}Button`} onClick={toggle}>{category}</button>
@@ -68,7 +68,7 @@ function App() {
             <div className="sidebar">
                 <CategoryForm addCategory={addCategory} categoryList={categoryList} />
                 <ul className="categoryContainer" key={uniqid()}>
-                    {showCategories}
+                    {showCategoryList}
                 </ul>
             </div>
             <div className="display">

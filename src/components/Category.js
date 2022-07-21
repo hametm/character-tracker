@@ -11,8 +11,6 @@ function Category(props) {
         setShowForm(num);
     }    
 
-    
-
     const showActivities = props.tvShowList.map(tvShow => {
         if (tvShow.categoryName === props.name) {
             return (

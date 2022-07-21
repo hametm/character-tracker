@@ -2,35 +2,19 @@ import React, { useState } from "react";
 import EditTvShow from "./EditTvShow";
 
 function TvShow(props) {
-    const [show, setShow] = useState(1);
+    const [showShow, setShowShow] = useState(1); // ¯\_(ツ)_/¯
+    const [showDetails, setShowDetails] = useState(0);
     const [name, setName] = useState(props.name);
     const [genre, setGenre] = useState(props.genre);
     const [platform, setPlatform] = useState(props.platform);
     const [description, setDescription] = useState(props.description);
     const [length, setLength] = useState(props.length);
 
-    const onEditClick = (newName, newGenre, newPlatform, newDescription, newLength) => {
-        setName(newName);
-        setGenre(newGenre);
-        setPlatform(newPlatform);
-        setDescription(newDescription);
-        setLength(newLength);
-        setShow(1);
-    }
-
-    const removeCompleteTvShow = (e) => {
-        let index = e.target.id;
-        for (let i = 0; i < props.tvShowList.length; i++) {
-            if (props.tvShowList[i].index === index) {
-                props.removeTvShow(props.tvShowList[i]);
-            }
-        }
-    }
-
     const showEditForm = () => {
         return (
             <EditTvShow
                 name={name}
+                genre={genre}
                 platform={platform}
                 description={description}
                 length={length}
@@ -44,39 +28,61 @@ function TvShow(props) {
 
     const showTvShow = () => {
         return (
-            <div>
-                <button id={props.index} onClick={removeCompleteTvShow}>X</button>
+            <li className="tvShow">
+                <div className="tvShowButtonContainer">
+                    <button onClick={() => toggleDetails(props.index)}>Expand</button>
+                    <button onClick={() => setShowShow(0)}>Edit</button>
+                    <button id={props.index} onClick={removeTvShow}>X</button>
+                </div>
                 <h3>{name}</h3>
-                <p>{genre}</p>
-                <p>{platform}</p>
-                <p>{description}</p>
-                <p>{length}</p>
-                <button onClick={() => setShow(0)}>Edit</button>
-            </div>
+                {showTvShowDetails(props.index)}
+            </li>
         );
     }
 
-    const toggle = () => {
-        if (show === 1) {
+    const showTvShowDetails = (index) => {
+        if (showDetails === index) {
             return (
                 <div>
-                    {showTvShow()}
-                </div>
-            )
-        }
-        if (show === 0) {
-            return (
-                <div>
-                    {showEditForm()}
+                    <p>{genre}</p>
+                    <p>{platform}</p>
+                    <p>{description}</p>
+                    <p>{length}</p>
                 </div>
             )
         }
     }
 
+    const onEditClick = (newName, newGenre, newPlatform, newDescription, newLength) => {
+        setName(newName);
+        setGenre(newGenre);
+        setPlatform(newPlatform);
+        setDescription(newDescription);
+        setLength(newLength);
+        setShowShow(1);
+    }
+
+    const removeTvShow = (e) => {
+        let index = e.target.id;
+        for (let i = 0; i < props.tvShowList.length; i++) {
+            if (props.tvShowList[i].index === index) {
+                props.removeTvShow(props.tvShowList[i]);
+            }
+        }
+    }
+
+    const toggleShow = () => {
+        if (showShow === 1) return <div>{showTvShow()}</div>
+        if (showShow === 0) return <div>{showEditForm()}</div>
+    }
+
+    const toggleDetails = (index) => {
+        if (showDetails === index) setShowDetails(0);
+        if (showDetails === 0) setShowDetails(index);
+    }
+
     return (
-        <div>
-            {toggle()}
-        </div>
+            <ul className="tvShowContainer">{toggleShow()}</ul>
     );
 
 }
