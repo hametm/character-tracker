@@ -61,26 +61,51 @@ function EditTvShow(props) {
         }
     }
 
+    const addEventListeners = () => {
+        const editShowInputs = document.querySelectorAll(".editShowInput");
+        const editShowSubmit = document.getElementById("tvShowEdit");
+        editShowInputs.forEach(input => {
+            input.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    editShowSubmit.click();
+                }
+            });
+        });
+    }
+
+    addEventListeners();
+
     return (
-        <div className="popup">
-            <div className="closeButtonContainer">
-                <button className="popupCloseButton" onClick={closeButtonClick}>X</button>
-            </div>
-            <form action="">
-                <legend>Edit TvShow</legend>
-                <label htmlFor="tvShowName">Name</label>
-                <input type="text" id="tvShowName" onChange={handleNameChange} value={name} />
-                <label htmlFor="genre">Genre</label>
-                <input type="text" id="genre" onChange={handleGenreChange} value={genre} />
-                <label htmlFor="platform">Streaming platform</label>
-                <input type="platform" id="platform" onChange={handlePlatformChange} value={platform} />
-                <label htmlFor="description">Description</label>
-                <input type="text" id="description" onChange={handleDescriptionChange} value={description}  />
-                <label htmlFor="length">Length</label>
-                <input type="text" id="length" onChange={handleLengthChange} value={length} />
-                <input type ="submit" id="tvShowEdit" onClick={submitButtonClick} />
+            <form action="" className="tvShowForm popup">
+                <div className="formHeader">
+                    <legend>Edit Show</legend>
+                    <div className="closeButtonContainer">
+                        <button className="popupCloseButton" onClick={closeButtonClick}>X</button>
+                    </div>
+                </div>
+                <div className="formSection">
+                    <label htmlFor="tvShowName">Name</label>
+                    <input className="editShowInput" type="text" id="tvShowName" onChange={handleNameChange} value={name} />
+                </div>
+                <div className="formSection">
+                    <label htmlFor="genre">Genre</label>
+                    <input className="editShowInput" type="text" id="genre" onChange={handleGenreChange} value={genre} />
+                </div>
+                <div className="formSection">
+                    <label htmlFor="platform">Streaming platform</label>
+                    <input className="editShowInput" type="text" id="platform" onChange={handlePlatformChange} value={platform} />
+                </div>
+                <div className="formSection">
+                    <label htmlFor="description">Description</label>
+                    <input className="editShowInput" type="text" id="description" onChange={handleDescriptionChange} value={description}  />
+                </div>
+                <div className="formSection">
+                    <label htmlFor="length">Length</label>
+                    <input type="text" id="length" onChange={handleLengthChange} value={length} />
+                </div>
+                <input type ="submit" className="submitButton" id="tvShowEdit" onClick={submitButtonClick} />
             </form>
-        </div>
       );
 }
 

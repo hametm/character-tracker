@@ -63,6 +63,21 @@ function TvShowForm(props) {
         else submitButton.disabled = false;
     }
 
+    const addClickEventListener = () => {
+        const tvShowInputs = document.querySelectorAll(".tvShowInput");
+        const tvShowSubmit = document.getElementById("tvShowSubmit");
+        tvShowInputs.forEach(input => {
+            input.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    tvShowSubmit.click();
+                }
+            });
+        });
+    }
+
+    addClickEventListener();
+
     return (
         <form action="" className="tvShowForm popup">
             <div className="formHeader">
@@ -73,23 +88,23 @@ function TvShowForm(props) {
             </div>
             <div className="formSection">
                 <label htmlFor="tvShowName">Name</label>
-                <input type="text" id="tvShowName" onChange={handleNameChange} />
+                <input className="tvShowInput" type="text" id="tvShowName" onChange={handleNameChange} />
             </div>
             <div className="formSection">
                 <label htmlFor="genre">Genre</label>
-                <input type="text" id="genre" onChange={handleGenreChange} />
+                <input className="tvShowInput" type="text" id="genre" onChange={handleGenreChange} />
             </div>
             <div className="formSection">
                 <label htmlFor="platform">Streaming platform</label>
-                <input type="text" id="platform" onChange={handlePlatformChange} />
+                <input className="tvShowInput" type="text" id="platform" onChange={handlePlatformChange} />
             </div>
             <div className="formSection">
                 <label htmlFor="description">Description</label>
-                <input type="text" id="description" onChange={handleDescriptionChange} />
+                <input className="tvShowInput" type="text" id="description" onChange={handleDescriptionChange} />
             </div>
             <div className="formSection">
                 <label htmlFor="length">Length</label>
-                <input type="text" id="length" onChange={handleLengthChange} />
+                <input className="tvShowInput" type="text" id="length" onChange={handleLengthChange} />
             </div>
             <input type="submit" className="submitButton" id="tvShowSubmit" onClick={submitButtonClick} />
         </form>

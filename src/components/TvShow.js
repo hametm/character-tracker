@@ -29,7 +29,7 @@ function TvShow(props) {
 
     const showTvShow = () => {
         return (
-            <li className="tvShow">
+            <div className="tvShow">
                 <div className="tvShowCard">
                     <h3>{name}</h3>
                     <div className="tvShowButtonContainer">
@@ -39,14 +39,14 @@ function TvShow(props) {
                     </div>
                 </div>
                 {showTvShowDetails(props.index)}
-            </li>
+            </div>
         );
     }
 
     const showTvShowDetails = (index) => {
         if (showDetails === index) {
             return (
-                <div>
+                <div className="tvShowDetails">
                     {/* <button onClick={() => setShowEdit(1)}>Edit</button> */}
                     <p>{genre}</p>
                     <p>{platform}</p>
@@ -88,10 +88,10 @@ function TvShow(props) {
     }
 
     return (
-            <ul className="tvShowContainer">
+            <div className="tvShowContainer">
                 {showTvShow()}
                 {toggleShow()}
-            </ul>
+            </div>
     );
 
 }

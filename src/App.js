@@ -11,6 +11,17 @@ function App() {
     const [show, setShow] = useState(0);
     const [highlightedCat, setHighlightedCat] = useState("");
 
+    useEffect(() => {
+        const highlighted = document.getElementById(`${[highlightedCat]}Category`);
+        if (highlighted) {
+            const categories = document.querySelectorAll(".category");
+            categories.forEach(category => {
+                if(category.classList.contains("selected")) category.classList.remove("selected");
+            });
+            highlighted.classList.add("selected");
+        } 
+    });
+
     const addCategory = (category) => {
         setCategoryList(categoryList.concat(category));
     }
@@ -65,23 +76,26 @@ function App() {
         }
     }
 
-    useEffect(() => {
-        const highlighted = document.getElementById(`${[highlightedCat]}Category`);
-        if (highlighted) {
-            const categories = document.querySelectorAll(".category");
-            categories.forEach(category => {
-                if(category.classList.contains("selected")) category.classList.remove("selected");
-            });
-            highlighted.classList.add("selected");
-        } 
-    });
-
     const highlightCategory = (id) => {
         let arr = id.split("");
         arr.splice(-6, 6).join("");
         let category = arr.join("");
         setHighlightedCat(category);
     }
+
+
+    const addClickEventListener = () => {
+        const catFormInput = document.getElementById("categoryName");
+        const catSubmit = document.querySelector(".categorySubmit");
+        catFormInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                catSubmit.click();
+            }
+        });
+    }
+
+    addClickEventListener();
 
     return (
       <div className="App">

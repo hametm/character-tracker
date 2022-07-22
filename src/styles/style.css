@@ -1,16 +1,17 @@
 :root {
-    --background: #f2e9e4;
+    --app: #f2e9e4;
     --sidebar: #ededed;
     --selected: white;
-    --purple: #876ed4;
+    --background: #eebbb3;
     --light-purple: #ca90ee;
-    --button: rgb(2, 2, 131);
-    --button-hover: rgb(38, 38, 187);
+    --button: #026996;
+    --button-hover: #004664;
+    --button-disabled: rgb(92, 92, 118);
 }
 
 body {
     margin: 0;
-    background-color: var(--purple);
+    background-color: var(--background);
     padding: 3rem;
 }
 
@@ -23,7 +24,8 @@ body {
     border: 3px solid black;
     border-radius: 12px;
     box-shadow: -3px 3px black;
-    background-color: var(--background);
+    background-color: var(--app);
+    padding: 1rem;
 }
 
 ul, li {
@@ -53,7 +55,7 @@ button:hover {
 }
 
 header {
-    padding-left: 1rem;
+    
 }
 
 main {
@@ -74,7 +76,8 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 1rem;
+    padding-right: 1rem;
+    width: max(25%, 220px);
 }
 
 #categoryForm {
@@ -104,7 +107,6 @@ footer {
     display: flex;
     border-radius: 8px;
     padding: .5rem;
-
 }
 
 .category:hover {
@@ -122,9 +124,34 @@ footer {
 /* Shows */
 
 .display {
-    width: 100%;
     padding: 1rem 3rem;
     background-color: white;
+    flex-grow: 1;
+}
+
+.tvShowList {
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.tvShow {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  
+}
+
+.tvShowCard {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.tvShowDetails {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    background-color: var(--app);
 }
 
 .popup {
@@ -135,7 +162,7 @@ footer {
     border: 1px solid grey;
     padding: 1rem;
     box-shadow: -3px 3px var(--purple);
-    background-color: var(--background);
+    background-color: var(--app);
 }
 
 .addButtonContainer {
@@ -187,21 +214,14 @@ footer {
     background-color: var(--button-hover);
 }
 
+.submitButton:disabled, .submitButton:disabled:hover {
+    cursor: auto;
+    background-color: var(--button-disabled);
+    color: rgb(224, 224, 224);
+}
+
 .tvShowContainer {
 
-}
-
-.tvShow {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-  
-}
-
-.tvShowCard {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
 }
 
 .closeButtonContainer {

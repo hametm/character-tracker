@@ -14,7 +14,7 @@ function Category(props) {
     const showActivities = props.tvShowList.map(tvShow => {
         if (tvShow.categoryName === props.name) {
             return (
-                <ul key={uniqid()}>
+                <ul className="tvShowList" key={uniqid()}>
                     <li>
                         <TvShow 
                             name={tvShow.name} 
