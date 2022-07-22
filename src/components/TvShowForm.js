@@ -85,7 +85,7 @@ function TvShowForm(props) {
                 </div>
             </div>
             <div className="formSection">
-                <label htmlFor="tvShowName">Name</label>
+                <label htmlFor="tvShowName">Name*</label>
                 <input className="tvShowInput" type="text" id="tvShowName" onChange={handleNameChange} />
             </div>
             <div className="formSection">

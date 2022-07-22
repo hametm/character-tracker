@@ -4,6 +4,23 @@ function CategoryForm(props) {
     const [category, setCategory] = useState("");
 
     useEffect(() => {
+        const input = document.getElementById("categoryName");
+        input.addEventListener('input', () => {
+            for (let i = 0; i < props.categoryList.length; i++) {
+                if (input.value === props.categoryList[i]) {
+                    input.classList.add("error");
+                    input.setCustomValidity("This category already exists!");
+                    input.reportValidity();
+                } 
+                else {
+                    input.classList.remove("error");
+                    input.setCustomValidity("");
+                }
+            }
+        })
+    });
+
+    useEffect(() => {
         checkForErrors();
     });
 
