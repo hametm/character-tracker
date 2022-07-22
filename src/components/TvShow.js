@@ -41,8 +41,8 @@ function TvShow(props) {
     const showTvShow = () => {
         return (
             <div className="tvShow">
-                <div onClick={() => toggleDetails(props.index)} className="tvShowCard">
-                    <h3>{name}</h3>
+                <div className="tvShowCard">
+                    <h3 className="tvShowHeader" onClick={() => toggleDetails(props.index)}>{name}</h3>
                     <div className="tvShowButtonContainer">
                         <button className="editButton" onClick={() => setShowEdit(1)}></button>
                         <button className="closeButton" id={props.index} onClick={removeTvShow}></button>
