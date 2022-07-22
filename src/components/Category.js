@@ -11,24 +11,22 @@ function Category(props) {
         setShowForm(num);
     }    
 
-    const showActivities = props.tvShowList.map(tvShow => {
+    const showTvShows = props.tvShowList.map(tvShow => {
         if (tvShow.categoryName === props.name) {
             return (
-                <ul className="tvShowList" key={uniqid()}>
-                    <li>
-                        <TvShow 
-                            name={tvShow.name} 
-                            genre={tvShow.genre} 
-                            platform={tvShow.platform} 
-                            description = {tvShow.description}
-                            length = {tvShow.length}
-                            categoryName={tvShow.categoryName}
-                            tvShowList={props.tvShowList}
-                            index={tvShow.index}
-                            removeTvShow={props.removeTvShow}
-                        />
-                    </li>
-                </ul>
+                <li className="tvShowList" key={uniqid()}>
+                    <TvShow 
+                        name={tvShow.name} 
+                        genre={tvShow.genre} 
+                        platform={tvShow.platform} 
+                        description = {tvShow.description}
+                        length = {tvShow.length}
+                        categoryName={tvShow.categoryName}
+                        tvShowList={props.tvShowList}
+                        index={tvShow.index}
+                        removeTvShow={props.removeTvShow}
+                    />
+                </li>
             );
         }
         
@@ -59,7 +57,7 @@ function Category(props) {
                 <button className="addButton" onClick={toggleForm}>+</button>
             </div>
             {showTvShowForm()}
-            {showActivities}
+            <ul className="tvShowContainer">{showTvShows}</ul>
         </div>
     );
 }

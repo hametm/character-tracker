@@ -44,8 +44,8 @@ function TvShow(props) {
                 <div className="tvShowCard">
                     <h3 className="tvShowHeader" onClick={() => toggleDetails(props.index)}>{name}</h3>
                     <div className="tvShowButtonContainer">
-                        <button className="editButton" onClick={() => setShowEdit(1)}></button>
-                        <button className="closeButton" id={props.index} onClick={removeTvShow}></button>
+                        <button aria-label="edit" className="editButton" onClick={() => setShowEdit(1)}></button>
+                        <button aria-label="delete" className="closeButton" id={props.index} onClick={removeTvShow}></button>
                     </div>
                 </div>
                 {showTvShowDetails(props.index)}
