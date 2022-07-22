@@ -9,6 +9,7 @@ function App() {
     const [categoryList, setCategoryList] = useState([]);
     const [tvShowList, setTvShowList] = useState([]);
     const [show, setShow] = useState(0);
+    const [showEmpty, setShowEmpty] = useState(1);
     const [highlightedCat, setHighlightedCat] = useState("");
 
     useEffect(() => {
@@ -21,6 +22,11 @@ function App() {
             highlighted.classList.add("selected");
         } 
     });
+
+    useEffect(() => {
+        if (categoryList.length === 0) setShowEmpty(1);
+        else if (categoryList.length > 0) setShowEmpty(0);
+    }, [categoryList]);
 
     const addCategory = (category) => {
         setCategoryList(categoryList.concat(category));
@@ -83,6 +89,14 @@ function App() {
         setHighlightedCat(category);
     }
 
+    const showEmptyMessage = () => {
+        if (showEmpty === 1) {
+            return (
+                <p>No shows yet. Add a category to get started!</p>
+            );
+        }
+    }
+
     return (
       <div className="App">
         <header>
@@ -96,6 +110,7 @@ function App() {
                 </ul>
             </div>
             <div className="display">
+                {showEmptyMessage()}
                 {showCategory()}
             </div>
         </main>
