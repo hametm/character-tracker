@@ -83,20 +83,6 @@ function App() {
         setHighlightedCat(category);
     }
 
-
-    const addClickEventListener = () => {
-        const catFormInput = document.getElementById("categoryName");
-        const catSubmit = document.querySelector(".categorySubmit");
-        catFormInput.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") {
-                e.preventDefault();
-                catSubmit.click();
-            }
-        });
-    }
-
-    addClickEventListener();
-
     return (
       <div className="App">
         <header>

@@ -63,7 +63,7 @@ function TvShowForm(props) {
         else submitButton.disabled = false;
     }
 
-    const addClickEventListener = () => {
+    useEffect(() => {
         const tvShowInputs = document.querySelectorAll(".tvShowInput");
         const tvShowSubmit = document.getElementById("tvShowSubmit");
         tvShowInputs.forEach(input => {
@@ -74,9 +74,7 @@ function TvShowForm(props) {
                 }
             });
         });
-    }
-
-    addClickEventListener();
+    }, []);
 
     return (
         <form action="" className="tvShowForm popup">

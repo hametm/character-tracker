@@ -27,6 +27,17 @@ function CategoryForm(props) {
         if (category === "" || flag) submitButton.disabled = true;
         else submitButton.disabled = false;
     }
+    
+    useEffect(() => {
+        const catFormInput = document.getElementById("categoryName");
+        const catSubmit = document.querySelector(".categorySubmit");
+        catFormInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                catSubmit.click();
+            }
+        });
+    }, []);
 
     return (
         <form action="" id="categoryForm">

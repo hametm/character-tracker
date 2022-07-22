@@ -61,7 +61,7 @@ function EditTvShow(props) {
         }
     }
 
-    const addEventListeners = () => {
+    useEffect(() => {
         const editShowInputs = document.querySelectorAll(".editShowInput");
         const editShowSubmit = document.getElementById("tvShowEdit");
         editShowInputs.forEach(input => {
@@ -72,9 +72,7 @@ function EditTvShow(props) {
                 }
             });
         });
-    }
-
-    addEventListeners();
+    }, [])
 
     return (
             <form action="" className="tvShowForm popup">
