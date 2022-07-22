@@ -56,7 +56,7 @@ function Category(props) {
     return (
         <div>
             <div className="addButtonContainer">
-                <button className="addButton" onClick={toggleForm}>+Add show</button>
+                <button className="addButton" onClick={toggleForm}>+</button>
             </div>
             {showTvShowForm()}
             {showActivities}

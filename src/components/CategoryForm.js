@@ -41,7 +41,7 @@ function CategoryForm(props) {
 
     return (
         <form action="" id="categoryForm">
-            <label htmlFor="categoryName">New Category</label>
+            <label htmlFor="categoryName"><strong>New Category</strong></label>
             <input 
                 type="text" 
                 id="categoryName" 

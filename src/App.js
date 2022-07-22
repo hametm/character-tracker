@@ -28,7 +28,7 @@ function App() {
 
     const removeCategory = (category) => {
         setCategoryList(categoryList.filter(x => x !== category));
-        setShow(0);
+        setShow(0); // Needs something special
     }
 
     const addTvShow = (tvShow) => {

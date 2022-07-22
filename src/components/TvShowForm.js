@@ -8,6 +8,10 @@ function TvShowForm(props) {
     const [description, setDescription] = useState("");
     const [length, setLength] = useState("");
 
+    useEffect(() => {
+        checkForErrors();
+    });
+
     const handleNameChange = (e) => {
         setName(e.target.value);
     }
@@ -27,10 +31,6 @@ function TvShowForm(props) {
     const handleLengthChange = (e) => {
         setLength(e.target.value);
     }
-
-    useEffect(() => {
-        checkForErrors();
-    });
 
     const createTvShow = () => {
         let newTvShow = {

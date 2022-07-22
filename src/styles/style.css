@@ -1,31 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Passion+One&family=Rampart+One&display=swap');
+
 :root {
-    --app: #f2e9e4;
+    --background: #f2e9e4;
     --sidebar: #ededed;
     --selected: white;
-    --background: #eebbb3;
-    --light-purple: #ca90ee;
     --button: #026996;
     --button-hover: #004664;
-    --button-disabled: rgb(92, 92, 118);
+    --button-disabled: rgb(126, 126, 142);
+    --popup: #f2e9e4;
+    --green: rgb(37, 121, 111);
 }
 
 body {
     margin: 0;
     background-color: var(--background);
-    padding: 3rem;
+    font-family: 'Inter', sans-serif;
+    display: grid;
 }
 
 .App {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
-    border: 3px solid black;
-    border-radius: 12px;
-    box-shadow: -3px 3px black;
-    background-color: var(--app);
-    padding: 1rem;
+    min-height: 100vh;
 }
 
 ul, li {
@@ -54,8 +52,18 @@ button:hover {
     cursor: pointer;
 }
 
+.hidden {
+    display: none;
+}
+
 header {
-    
+    background: var(--green);
+}
+
+header h1 {
+    font-family: 'Rampart One', cursive;
+    font-size: 3.25rem;
+    margin: 1rem;
 }
 
 main {
@@ -67,7 +75,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 5px;
+    padding: 8px;
+    font-size: .9rem;
 }
 
 /* Sidebar */
@@ -76,8 +85,8 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding-right: 1rem;
     width: max(25%, 220px);
+    padding: 1rem;
 }
 
 #categoryForm {
@@ -124,13 +133,13 @@ footer {
 /* Shows */
 
 .display {
-    padding: 1rem 3rem;
+    padding: 1rem;
     background-color: white;
     flex-grow: 1;
 }
 
 .tvShowList {
-    margin-top: 1rem;
+    margin: 1rem 3rem;
     gap: 1rem;
 }
 
@@ -138,6 +147,8 @@ footer {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+    background-color: var(--background);
+    padding: .5rem;
   
 }
 
@@ -145,6 +156,10 @@ footer {
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+
+.tvShowCard:hover {
+    cursor: pointer;
 }
 
 .tvShowDetails {
@@ -156,13 +171,15 @@ footer {
 
 .popup {
     position: fixed;
+    border: 1px solid black;
     top: 50vh;
     left: 50vw;
     transform: translate(-50%, -50%);
-    border: 1px solid grey;
     padding: 1rem;
     box-shadow: -3px 3px var(--purple);
     background-color: var(--app);
+    background-color: var(--popup);
+    box-shadow: -3px 3px black;
 }
 
 .addButtonContainer {
@@ -170,7 +187,20 @@ footer {
 }
 
 .addButton {
-    font-size: 1.25rem;
+    width: 40px;
+    height: 40px;
+    font-size: 2rem;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--green);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addButton:hover {
+    transform: scale(1.1);
 }
 
 .tvShowForm {
@@ -180,8 +210,9 @@ footer {
 }
 
 .tvShowForm legend {
-    font-size: 1.25rem;
+    font-size: 2rem;
     padding: 0;
+    font-family: 'Passion One', cursive;
 }
 
 .formHeader {
@@ -220,8 +251,29 @@ footer {
     color: rgb(224, 224, 224);
 }
 
-.tvShowContainer {
+.tvShowButtonContainer {
+    display: flex;
+    gap: 1rem;
+}
 
+.tvShowButtonContainer .closeButton {
+    width: 20px;
+    background-image: url(./images/delete.png);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#tvShowSubmit.submitButton {
+    margin-top: 1rem;
+}
+
+.editButton {
+    width: 20px;
+    background-image: url(./images/pencil.png);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .closeButtonContainer {

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import EditTvShow from "./EditTvShow";
 
 function TvShow(props) {
@@ -9,6 +10,16 @@ function TvShow(props) {
     const [platform, setPlatform] = useState(props.platform);
     const [description, setDescription] = useState(props.description);
     const [length, setLength] = useState(props.length);
+
+    useEffect(() => {
+        const detailSections = document.querySelectorAll(".detailsSection");
+        detailSections.forEach(section => {
+            if (section.textContent === "") {
+                section.classList.add("hidden");
+            }
+            else section.classList.remove("hidden");
+        });
+    }, [showDetails]);
 
     const showEditForm = () => {
         return (
@@ -30,12 +41,11 @@ function TvShow(props) {
     const showTvShow = () => {
         return (
             <div className="tvShow">
-                <div className="tvShowCard">
+                <div onClick={() => toggleDetails(props.index)} className="tvShowCard">
                     <h3>{name}</h3>
                     <div className="tvShowButtonContainer">
-                        <button onClick={() => toggleDetails(props.index)}>Expand</button>
-                        <button onClick={() => setShowEdit(1)}>Edit</button>
-                        <button id={props.index} onClick={removeTvShow}>X</button>
+                        <button className="editButton" onClick={() => setShowEdit(1)}></button>
+                        <button className="closeButton" id={props.index} onClick={removeTvShow}></button>
                     </div>
                 </div>
                 {showTvShowDetails(props.index)}
@@ -48,10 +58,10 @@ function TvShow(props) {
             return (
                 <div className="tvShowDetails">
                     {/* <button onClick={() => setShowEdit(1)}>Edit</button> */}
-                    <p>{genre}</p>
-                    <p>{platform}</p>
-                    <p>{description}</p>
-                    <p>{length}</p>
+                    <p className="detailsSection">{genre}</p>
+                    <p className="detailsSection">{platform}</p>
+                    <p className="detailsSection">{description}</p>
+                    <p className="detailsSection">{length}</p>
                 </div>
             )
         }
