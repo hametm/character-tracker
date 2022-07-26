@@ -4,12 +4,10 @@
     --background: #ffffff;
     --sidebar: #f7f7f7;
     --selected: #ffffff;
-    --button: #63bcc9;
-    --button-hover: #367e94;
-    --button-disabled: #8ea9ad;
+    --button: #7facd6;
+    --button-hover: #6488aa;
+    --button-disabled: #96abbe;
     --popup: #f8f0ed;
-    --green: rgb(37, 121, 111);
-    --yellow: rgb(227, 211, 28);
 }
 
 body {
@@ -61,16 +59,15 @@ button:hover {
 }
 
 header {
-    /* background-image: linear-gradient(90deg, #33539e, #7facd6, #bf88da, #e8b7d4, #a5678e); */
-    background-image: linear-gradient(90deg, #47cacc, #63bcc9, #cdb3d4, #e7b7c8, #ffbe88);
+    background-image: linear-gradient(90deg, #33539e, #7facd6, #bf88da, #e8b7d4, #a5678e);
     border-bottom: 2px solid grey;
 }
 
 header h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin: 1rem;
     color: white;
-    letter-spacing: 2px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 main {
@@ -168,7 +165,6 @@ footer {
     border: 1px solid grey;
     padding: .5rem 1rem;
     box-shadow: -2px 2px grey;
-  
 }
 
 .tvShowCard {
@@ -204,10 +200,6 @@ footer {
     box-shadow: -3px 3px grey;
 }
 
-.addButtonContainer {
-   
-}
-
 .addButton {
     width: 40px;
     height: 40px;
@@ -234,7 +226,8 @@ footer {
 .tvShowForm legend {
     font-size: 2rem;
     padding: 0;
-    font-family: 'Passion One', cursive;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
 }
 
 .formHeader {
@@ -308,7 +301,6 @@ footer {
 }
 
 @media (max-width: 480px) {
-
     header h1 {
         text-align: center;
     }

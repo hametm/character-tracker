@@ -57,14 +57,13 @@ function TvShow(props) {
         if (showDetails === index) {
             return (
                 <div className="tvShowDetails">
-                    {/* <button onClick={() => setShowEdit(1)}>Edit</button> */}
                     <p className="detailsSection">{genre}</p>
                     <p className="detailsSection">{platform}</p>
                     <p className="detailsSection">{description}</p>
                     <p className="detailsSection">{length}</p>
                 </div>
-            )
-        }
+            );
+        };
     }
 
     const onEditClick = (newName, newGenre, newPlatform, newDescription, newLength) => {
@@ -82,9 +81,7 @@ function TvShow(props) {
     const removeTvShow = (e) => {
         let index = e.target.id;
         for (let i = 0; i < props.tvShowList.length; i++) {
-            if (props.tvShowList[i].index === index) {
-                props.removeTvShow(props.tvShowList[i]);
-            }
+            if (props.tvShowList[i].index === index) props.removeTvShow(props.tvShowList[i]);
         }
     }
 

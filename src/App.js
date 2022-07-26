@@ -34,7 +34,7 @@ function App() {
 
     const removeCategory = (category) => {
         setCategoryList(categoryList.filter(x => x !== category));
-        setShow(0); // Needs something special
+        setShow(0); 
     }
 
     const addTvShow = (tvShow) => {
@@ -48,11 +48,8 @@ function App() {
     const toggle = (e) => {
         setShow(e);
         highlightCategory(e);
-        // if (show === e.target.id) setShow(0);
-        // else if (show === 0) setShow(e.target.id);
     }
 
-        
     const showCategoryList = categoryList.map(category => {
         return (
             <li id={`${category}Category`} className="category" key={uniqid()}>

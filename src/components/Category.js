@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import TvShow from "./TvShow";
 import TvShowForm from "./TvShowForm";
 import uniqid from "uniqid";
@@ -29,7 +29,6 @@ function Category(props) {
                 </li>
             );
         }
-        
     });
 
     const showTvShowForm = () => {
